@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fitness Tracker</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="tracker.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>FitClub — Your Tracker</h1>
+    <div class="top-actions">
+      <button id="exportBtn">Export Data (JSON)</button>
+      <button id="clearBtn">Clear All</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="left">
+      <div class="card">
+        <h2>Quick Add</h2>
+        <label>Weight (kg)</label>
+        <div class="row">
+          <input type="number" id="weightInput" placeholder="e.g. 72.5" step="0.1" />
+          <button id="addWeight">Add</button>
+        </div>
+
+        <label>Steps (today)</label>
+        <div class="row">
+          <input type="number" id="stepsInput" placeholder="e.g. 5000" />
+          <button id="addSteps">Save</button>
+        </div>
+
+        <label>Calories (today)</label>
+        <div class="row">
+          <input type="number" id="calInput" placeholder="e.g. 2200" />
+          <button id="addCal">Save</button>
+        </div>
+
+        <label>Water (ml)</label>
+        <div class="row">
+          <input type="number" id="waterInput" placeholder="e.g. 500" />
+          <button id="addWater">Add</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Workout Log</h2>
+        <form id="workoutForm">
+          <input type="text" id="workoutType" placeholder="Workout (e.g. Chest Push)" required />
+          <input type="text" id="workoutDuration" placeholder="Duration (min)" required />
+          <textarea id="workoutNotes" rows="2" placeholder="Notes (optional)"></textarea>
+          <div class="row">
+            <button type="submit">Add Workout</button>
+            <button type="button" id="clearWorkouts">Clear Log</button>
+          </div>
+        </form>
+
+        <ul id="workoutList" class="log-list"></ul>
+      </div>
+
+      <div class="card diet">
+        <h2>Diet Plan (editable)</h2>
+        <textarea id="dietPlan" rows="6" placeholder="Add your diet plan here..."></textarea>
+        <div class="row">
+          <button id="saveDiet">Save Plan</button>
+          <button id="resetDiet">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="card chart-card">
+        <h2>Weight Progress</h2>
+        <canvas id="weightChart" height="120"></canvas>
+      </div>
+
+      <div class="card chart-card">
+        <h2>Calories (last 7 entries)</h2>
+        <canvas id="calChart" height="120"></canvas>
+      </div>
+
+      <div class="card stats">
+        <h2>Today's Summary</h2>
+        <p><strong>Steps:</strong> <span id="todaySteps">0</span></p>
+        <p><strong>Calories:</strong> <span id="todayCalories">0</span></p>
+        <p><strong>Water (ml):</strong> <span id="todayWater">0</span></p>
+        <p><strong>Last Weight:</strong> <span id="lastWeight">—</span></p>
+      </div>
+
+      <div class="card">
+        <h2>Profile / Image</h2>
+        <!-- using your uploaded screenshot path (they will transform this path to URL) -->
+        <img src="/mnt/data/Screenshot 2025-11-22 005532.png" alt="profile" class="profile-img" />
+        <p class="muted">Replace this with your profile or progress photo.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <small>All data stored locally in your browser.</small>
+  </footer>
+
+  <script src="tracker.js"></script>
+</body>
+</html>
